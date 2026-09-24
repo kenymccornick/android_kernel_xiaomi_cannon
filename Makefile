@@ -962,6 +962,9 @@ KBUILD_CFLAGS += $(call cc-disable-warning, restrict)
 # Enabled with W=2, disabled by default as noisy
 KBUILD_CFLAGS += $(call cc-disable-warning, maybe-uninitialized)
 
+# Suppress modern GCC/Clang -Wint-conversion warnings
+KBUILD_CFLAGS += $(call cc-disable-warning, int-conversion)
+
 # disable invalid "can't wrap" optimizations for signed / pointers
 KBUILD_CFLAGS	+= $(call cc-option,-fno-strict-overflow)
 
