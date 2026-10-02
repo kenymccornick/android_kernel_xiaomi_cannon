@@ -8,6 +8,9 @@ subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include/
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include/mt-plat/
 subdir-ccflags-y += -I$(srctree)/drivers/devfreq/
 
+# Legacy MediaTek clkdbg contains implicit integer/pointer conversions.
+CFLAGS_clkdbg.o += $(call cc-disable-warning, int-conversion)
+
 obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-fixup-div.o clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o clk-mux.o clkchk.o
 obj-$(CONFIG_RESET_CONTROLLER) += reset.o
 ifneq ($(CONFIG_FPGA_EARLY_PORTING), y)
